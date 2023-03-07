@@ -1,0 +1,34 @@
+!------ Skeleton for body section -----
+Body 1
+  Name = base
+End
+
+Body 2
+  Name = block
+End
+
+!------ Skeleton for boundary section -----
+Boundary Condition 1
+  Name = slave
+End
+
+Boundary Condition 2
+  Name = baseside
+End
+
+Boundary Condition 3
+  Name = fixed
+End
+
+Boundary Condition 4
+  Name = top
+End
+
+Boundary Condition 5
+  Name = topside
+End
+
+Boundary Condition 6
+  Name = contact
+End
+

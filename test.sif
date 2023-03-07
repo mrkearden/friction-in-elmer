@@ -1,0 +1,103 @@
+Header
+  CHECK KEYWORDS Warn
+  Mesh DB "." "test2"
+  Include Path ""
+  Results Directory "test2"
+End
+
+Simulation
+  Max Output Level = 5
+  Coordinate System = Cartesian
+  Coordinate Mapping(3) = 1 2 3
+  Simulation Type = Transient
+Timestep intervals = 10
+Timestep sizes = .1
+  Steady State Max Iterations = 1
+  Output Intervals(1) = 1
+  Solver Input File = case.sif
+  Post File = friction2.vtu
+End
+
+Constants
+  Gravity(4) = 0 0 -1 9.82
+  Stefan Boltzmann = 5.670374419e-08
+  Permittivity of Vacuum = 8.85418781e-12
+  Permeability of Vacuum = 1.25663706e-6
+  Boltzmann Constant = 1.380649e-23
+  Unit Charge = 1.6021766e-19
+End
+
+Body 1
+  Target Bodies(1) = 1
+  Name = "base"
+  Equation = 1
+  Material = 1
+End
+
+Body 2
+  Target Bodies(1) = 2
+  Name = "block"
+  Equation = 1
+  Material = 2
+End
+
+Solver 1
+  Equation = Nonlinear elasticity
+!Element="p:2"
+  Calculate Loads = True
+  Procedure = "StressSolve" "StressSolver"
+  Calculate Stresses = True
+  Calculate Forces = Logical True
+  Calculate Velocities = Logical True
+  Variable = -dofs 3 Displacement
+  Exec Solver = Always
+  Stabilize = True
+  Optimize Bandwidth = True
+  Steady State Convergence Tolerance = 1.0e-5
+  Nonlinear System Convergence Tolerance = 1.0e-7
+  Nonlinear System Max Iterations = 1
+  Nonlinear System Newton After Iterations = 3
+  Nonlinear System Newton After Tolerance = 1.0e-3
+  Nonlinear System Relaxation Factor = 1
+  Linear System Solver = Direct
+  Linear System Direct Method = MUMPS
+End
+
+Equation 1
+  Name = "Equation 1"
+  Active Solvers(1) = 1 
+End
+
+Material 1
+  Name = "hard"
+  Density = 1000
+  Youngs modulus = 1.E9
+  Poisson ratio = .3
+Rayleigh Damping = Logical True
+Rayleigh Damping Alpha = Real 0.1
+Rayleigh Damping Beta = Real 1.0
+End
+
+Material 2
+  Name = "soft"
+  Density = 100
+  Youngs modulus = 1.E6
+  Poisson ratio = .3
+Rayleigh Damping = Logical True
+Rayleigh Damping Alpha = Real 0.1
+Rayleigh Damping Beta = Real 1.0
+End
+
+Boundary Condition 1
+  Target Boundaries(2) = 2 3
+  Name = "BoundaryCondition 1"
+  Displacement 1 = 0
+  Displacement 2 = 0
+  Displacement 3 = 0
+End
+
+Boundary Condition 2
+  Target Boundaries(1) = 4 
+  Name = "BoundaryCondition 4"
+  Normal Force = -10
+End

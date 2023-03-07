@@ -1,0 +1,12 @@
+Metadata for SaveScalars file: friction/forces.dat
+Elmer version: 9.0
+Elmer compilation date: 2023-03-02
+Solver input file: case.sif
+File started at: 2023/03/04 04:59:58
+ 
+Variables in columns of matrix: 
+   1: boundary sum: displacement contact load over bc save scalars
+   2: boundary sum: displacement contact normalload over bc save scalars
+   3: boundary sum: displacement contact slipload over bc save scalars
+   4: boundary sum: displacement loads over bc save scalars
+   5: boundary mean: displacement loads over bc save scalars

@@ -1,0 +1,10 @@
+! ----- names for bodies -----
+$ base = 1
+$ block = 2
+! ----- names for boundaries -----
+$ slave = 1
+$ baseside = 2
+$ fixed = 3
+$ top = 4
+$ topside = 5
+$ contact = 6

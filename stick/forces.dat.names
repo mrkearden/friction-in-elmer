@@ -1,0 +1,12 @@
+Metadata for SaveScalars file: stick/forces.dat
+Elmer version: 9.0
+Elmer compilation date: 2023-03-03
+Solver input file: case.sif
+File started at: 2023/03/07 05:07:23
+ 
+Variables in columns of matrix: 
+   1: boundary sum: displacement contact load over bc save scalars
+   2: boundary sum: displacement contact normalload over bc save scalars
+   3: boundary sum: displacement contact slipload over bc save scalars
+   4: boundary sum: displacement loads over bc save scalars
+   5: boundary mean: stress_zz over bc save scalars
