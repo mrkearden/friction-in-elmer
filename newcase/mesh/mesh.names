@@ -1,0 +1,13 @@
+! ----- names for bodies -----
+$ beam = 1
+$ base = 2
+! ----- names for boundaries -----
+$ load = 1
+$ support = 2
+$ top = 3
+$ bottom = 4
+$ yzero = 5
+$ yplus = 6
+$ bnry4 = 7
+$ end = 8
+$ master = 9

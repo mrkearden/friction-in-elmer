@@ -1,0 +1,139 @@
+Header
+  CHECK KEYWORDS Warn
+  Mesh DB "." "mesh"
+  Include Path ""
+  Results Directory "res"
+End
+
+Simulation
+  Max Output Level = 15
+  Coordinate System = Cartesian
+  Coordinate Mapping(3) = 1 2 3
+  Simulation Type = Transient !Steady State
+Timestep intervals = 1
+Timestep sizes = 1
+  Steady State Max Iterations = 1
+  Output Intervals(1) = 1
+  Solver Input File = case.sif
+  Post File = case.vtu
+End
+
+Constants
+  Gravity(4) = 0 -1 0 9.82
+  Stefan Boltzmann = 5.670374419e-08
+  Permittivity of Vacuum = 8.85418781e-12
+  Permeability of Vacuum = 1.25663706e-6
+  Boltzmann Constant = 1.380649e-23
+  Unit Charge = 1.6021766e-19
+End
+
+Body 1
+  Target Bodies(1) = 1
+  Name = "Body 1"
+  Equation = 1
+  Material = 1
+End
+
+Body 2
+  Target Bodies(1) = 2
+  Name = "Body 1"
+  Equation = 1
+  Material = 2
+End
+
+Solver 1
+  Equation = Linear elasticity
+  Procedure = "StressSolve" "StressSolver"
+  Calculate Stresses = True
+  Calculate Loads = True
+  Exec Solver = Always
+  Stabilize = True
+  Optimize Bandwidth = True
+  Steady State Convergence Tolerance = 1.0e-5
+  Nonlinear System Convergence Tolerance = 1.0e-7
+  Nonlinear System Max Iterations = 20
+  Nonlinear System Newton After Iterations = 3
+  Nonlinear System Newton After Tolerance = 1.0e-3
+  Nonlinear System Relaxation Factor = 1
+  Linear System Solver = Direct
+  Linear System Direct Method = MUMPS
+Apply Contact BCs = Logical True
+Edge Basis = Logical True
+End
+
+Equation 1
+  Name = "Equation 1"
+  Active Solvers(1) = 1
+End
+
+Material 1
+  Name = "Material 1"
+  Density = 1
+  Youngs modulus = 1E6
+  Poisson ratio = .3
+End
+
+Material 2
+  Name = "Material 2"
+  Density = 1
+  Youngs modulus = 1E9
+  Poisson ratio = .3
+End
+
+Boundary Condition 1
+  Target Boundaries(1) = 1 
+  Name = "BoundaryCondition 1"
+  Force 1 = 10000
+End
+
+Boundary Condition 2
+  Target Boundaries(1) = 2 
+  Name = "BoundaryCondition 2"
+  Displacement 1 = 0
+End
+
+
+Boundary Condition 3
+  Target Boundaries(1) = 5 
+  Name = "BoundaryCondition 4"
+  Displacement 2 = 0
+End
+
+Boundary Condition 4
+ Target Boundaries(1) = 9
+  Name = "Contact"
+Mortar BC = 5
+  Plane Projector = True
+  Galerkin Projector = Logical True
+  Static Friction Coefficient = Real 1.
+  Dynamic Friction Coefficient = Real 1.
+Stick Contact Coefficient = Real 1.
+ Friction Contact = Logical True
+Implicit Friction Coefficient = Real 1.0
+! Slip Contact = Logical True
+! Stick Contact = Logical True
+  Mass Consistent Normals = Logical True
+ Contact Velocity(3) = Real 1.0 0.0 0.0
+Contact Active Condition = Real 1.0
+End
+
+Boundary Condition 5
+  Target Boundaries(1) = 4 
+  Name = "slave"
+  Mass Consistent Normals = Logical True
+End
+
+Boundary Condition 6
+  Target Boundaries(2) = 7 8
+  Name = "BoundaryCondition fixed"
+  Displacement 1 = 0
+  Displacement 2 = 0
+  Displacement 3 = 0
+End
+
+Boundary Condition 7
+  Target Boundaries(1) = 3
+  Name = "BoundaryCondition normal"
+  Force 3 = -100000
+End
+
