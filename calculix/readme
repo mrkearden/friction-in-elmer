@@ -1,0 +1,5 @@
+Works well in calculix  
+Use same unv file developed for elmer  
+Use cae/calculix to create input deck  
+convert results to vtu  
+answer changes with friction coefficent as expected  
